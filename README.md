@@ -12,4 +12,4 @@ bash jex 8
 ## Support
 Currently, 8, 10, 11, 17 to 22 docker images are configured to use.
 
-**Note**: First execution may take time as it will pull the image from docker.
+**Note**: First execution may take time as it will pull the image from docker hub.
