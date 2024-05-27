@@ -1,0 +1,29 @@
+#!/bin/sh
+
+image=''
+
+if [ $1 == 8 ]; then
+    image='eclipse-temurin:8u332-b09-jdk-alpine'
+elif [ $1 == 11 ]; then
+    image='eclipse-temurin:11.0.13_8-jdk-alpine'
+elif [ $1 == 17 ]; then
+    image='eclipse-temurin:17_35-jdk-alpine'
+elif [ $1 == 18 ]; then
+    image='eclipse-temurin:18.0.1_10-jdk-alpine'
+elif [ $1 == 19 ]; then
+    image='eclipse-temurin:19_36-jdk-alpine'
+elif [ $1 == 20 ]; then
+    image='eclipse-temurin:20_36-jdk-alpine'
+elif [ $1 == 21 ]; then
+    image='eclipse-temurin:21_35-jdk-alpine'
+elif [ $1 == 22 ]; then
+    image='eclipse-temurin:22_36-jdk-alpine'
+fi
+
+if [ '$image' != '' ]; then
+    docker pull $image > .log
+    docker run --rm -v $PWD:/app -w /app $image javac Hello.java
+    docker run --rm -v $PWD:/app -w /app $image java Hello
+else 
+    echo 'This Java version is not configured'
+fi
